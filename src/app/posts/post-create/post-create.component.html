@@ -1,0 +1,49 @@
+<mat-spinner *ngIf="showSpinner"></mat-spinner>
+<form [formGroup]="form" (submit)="onSavePost()" *ngIf="!showSpinner">
+  <mat-card>
+    <mat-form-field>
+      <input type="text" matInput formControlName="title" placeholder="Title" />
+      <mat-error *ngIf="form.get('title').invalid"
+        >Please enter a title for the post
+
+        </mat-error
+      >
+    </mat-form-field>
+    <button mat-stroked-button type="button" (click)="uploadImage.click()">
+      Upload Image
+    </button>
+    <input
+      type="file"
+      name=""
+      #uploadImage
+      id=""
+      style="visibility: hidden;"
+      (change)="imageSelected($event)"
+    />
+    <div
+      *ngIf="imgSrc !== '' && imgSrc && form.get('image').valid"
+      class="showImage"
+    >
+      <img [src]="imgSrc" [alt]="form.value.title" />
+    </div>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="6"
+        formControlName="content"
+        placeholder="content of post..."
+      >
+      </textarea>
+      <mat-error *ngIf="form.get('content').invalid"
+        >Please enter a content for the post</mat-error
+      >
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Save Post
+    </button>
+  </mat-card>
+</form>
+
+<!-- <p>{{ newPost }}</p> -->

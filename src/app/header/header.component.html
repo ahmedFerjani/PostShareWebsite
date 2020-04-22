@@ -1,0 +1,13 @@
+<mat-toolbar color="primary"
+  ><span>Post Share&nbsp; &nbsp; &nbsp; </span>
+  <button mat-button routerLink="/">List</button>
+  <button mat-button routerLink="create" *ngIf="isAuth">Create</button>
+
+  <button mat-button routerLink="login" class="buttonRight" *ngIf="!isAuth">
+    Login
+  </button>
+  <button mat-button routerLink="signup" class="buttonRight" *ngIf="!isAuth">
+    Signup
+  </button>
+  <button mat-button *ngIf="isAuth" (click)="logout()">Logout</button>
+</mat-toolbar>
